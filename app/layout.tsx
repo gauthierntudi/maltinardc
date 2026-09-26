@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Montserrat, Nunito } from "next/font/google";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
+import { MALTINA_PRIMARY } from "@/lib/brand";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -25,7 +26,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ff6f00",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: MALTINA_PRIMARY },
+    { media: "(prefers-color-scheme: dark)", color: MALTINA_PRIMARY },
+  ],
   width: "device-width",
   initialScale: 1,
 };

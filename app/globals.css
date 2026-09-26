@@ -1,7 +1,8 @@
 :root {
+  --primary: #ff6f00;
   --sun: #ffc14d;
   --gold: #ffe34a;
-  --orange: #ff6f00;
+  --orange: var(--primary);
   --deep: #e24700;
   --ink: #1a1a1a;
   --muted: #a3a3a3;
