@@ -1,4 +1,4 @@
-const facebookUrl = "https://www.facebook.com/maltinardc";
+const facebookUrl = "https://www.facebook.com/share/1Dqas5tQUT/?mibextid=wwXIfr";
 const instagramUrl = "https://www.instagram.com/maltinardc";
 
 function StepBadge({ n }: { n: number }) {
