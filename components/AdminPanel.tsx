@@ -8,6 +8,7 @@ import {
   downloadParticipationsCsv,
   downloadParticipationsExcel,
 } from "@/lib/export-participations";
+import { formatPhoneDisplay } from "@/lib/participation";
 
 type ParticipationRow = {
   id: number;
@@ -36,14 +37,6 @@ function formatDate(value: string) {
     dateStyle: "short",
     timeStyle: "short",
   }).format(date);
-}
-
-function formatPhone(value: string) {
-  const digits = value.replace(/\D/g, "");
-  if (digits.length === 10) {
-    return digits.replace(/(\d{2})(?=\d)/g, "$1 ").trim();
-  }
-  return value;
 }
 
 function parseRowDate(value: string) {
@@ -633,7 +626,7 @@ export function AdminPanel() {
                       </td>
                       <td>
                         <a className="admin-phone" href={`tel:${row.telephone}`}>
-                          {formatPhone(row.telephone)}
+                          {formatPhoneDisplay(row.telephone)}
                         </a>
                       </td>
                       <td>
@@ -680,7 +673,7 @@ export function AdminPanel() {
                   <div className="admin-mobile-card-meta">
                     <a className="admin-phone" href={`tel:${row.telephone}`}>
                       <i className="bi bi-telephone" aria-hidden />
-                      {formatPhone(row.telephone)}
+                      {formatPhoneDisplay(row.telephone)}
                     </a>
                     <time className="admin-date" dateTime={row.created_at}>
                       {formatDate(row.created_at)}
@@ -731,7 +724,7 @@ export function AdminPanel() {
                 <strong>{deleteTarget.nom}</strong>
               </p>
               <p className="admin-modal-meta">
-                {formatPhone(deleteTarget.telephone)} · #{deleteTarget.id}
+                {formatPhoneDisplay(deleteTarget.telephone)} · #{deleteTarget.id}
               </p>
             </>
           ) : null

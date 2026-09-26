@@ -69,9 +69,12 @@ export async function listParticipations(options: ListParticipationsOptions = {}
 
   if (search) {
     const phoneDigits = search.replace(/\D/g, "");
+    const normalizedPhone = normalizePhone(search);
+    const phoneNeedle =
+      normalizedPhone.length >= 5 ? normalizedPhone.replace(/^243/, "") : phoneDigits;
     if (phoneDigits.length >= 2) {
       whereClause = "WHERE LOWER(nom) LIKE LOWER(?) OR telephone LIKE ?";
-      filterParams = [`%${search}%`, `%${phoneDigits}%`];
+      filterParams = [`%${search}%`, `%${phoneNeedle}%`];
     } else {
       whereClause = "WHERE LOWER(nom) LIKE LOWER(?)";
       filterParams = [`%${search}%`];

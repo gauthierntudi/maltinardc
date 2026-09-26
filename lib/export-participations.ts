@@ -1,5 +1,7 @@
 "use client";
 
+import { formatPhoneDisplay, normalizePhone } from "@/lib/participation";
+
 export type ParticipationsExportRow = {
   id: number;
   nom: string;
@@ -10,14 +12,6 @@ export type ParticipationsExportRow = {
 
 function exportFileBaseName() {
   return `maltina-participations-${new Date().toISOString().slice(0, 10)}`;
-}
-
-function formatPhoneForExport(value: string) {
-  const digits = value.replace(/\D/g, "");
-  if (digits.length === 10) {
-    return digits.replace(/(\d{2})(?=\d)/g, "$1 ").trim();
-  }
-  return value;
 }
 
 function formatDateForExport(value: string) {
@@ -33,7 +27,7 @@ function toSheetRows(rows: ParticipationsExportRow[]) {
   return rows.map((row) => ({
     ID: row.id,
     Nom: row.nom,
-    Téléphone: formatPhoneForExport(row.telephone),
+    Téléphone: formatPhoneDisplay(normalizePhone(row.telephone)),
     "18+": row.majeur ? "Oui" : "Non",
     Date: formatDateForExport(row.created_at),
   }));

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createParticipation, DuplicatePhoneError } from "@/lib/participation-db";
 import { validateAge, validateName, validatePhone, type Majeur } from "@/lib/participation";
+import { sendParticipationSuccessSms } from "@/lib/unikron-sms";
 
 export const runtime = "nodejs";
 
@@ -41,6 +42,16 @@ export async function POST(request: Request) {
 
   try {
     const saved = await createParticipation({ nom, telephone, majeur });
+
+    try {
+      await sendParticipationSuccessSms({ nom: saved.nom, telephone });
+    } catch (error) {
+      console.error(
+        "[unikron] SMS de confirmation non envoye:",
+        error instanceof Error ? error.message : error,
+      );
+    }
+
     return NextResponse.json({ ok: true, id: saved.id, nom: saved.nom });
   } catch (error) {
     if (error instanceof DuplicatePhoneError) {

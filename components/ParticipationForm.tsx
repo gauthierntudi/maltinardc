@@ -4,6 +4,7 @@ import { useRef, useState, type FormEvent } from "react";
 import { BottomSheet } from "@/components/BottomSheet";
 import {
   normalizeName,
+  normalizePhone,
   validateAge,
   validateName,
   validatePhone,
@@ -81,7 +82,7 @@ export function ParticipationForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nom: cleanName,
-          telephone: telephone.trim(),
+          telephone: normalizePhone(telephone),
           majeur: "oui",
         }),
       });
