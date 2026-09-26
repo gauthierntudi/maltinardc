@@ -33,7 +33,7 @@ export function formatPhoneForUnikron(normalizedPhone: string) {
   if (!/^243[0-9]{9}$/.test(digits)) {
     throw new Error("Numéro incompatible avec l'envoi SMS Unikron.");
   }
-  return `+${digits}`;
+  return digits;
 }
 
 export async function sendUnikronSms(number: string, text: string) {
