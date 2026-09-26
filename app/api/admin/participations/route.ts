@@ -10,11 +10,12 @@ export async function GET(request: Request) {
   }
 
   const { searchParams } = new URL(request.url);
-  const limit = Number(searchParams.get("limit") ?? "200");
+  const limit = Number(searchParams.get("limit") ?? "20");
   const offset = Number(searchParams.get("offset") ?? "0");
+  const search = searchParams.get("q")?.trim() ?? "";
 
   try {
-    const data = await listParticipations(limit, offset);
+    const data = await listParticipations({ limit, offset, search });
     return NextResponse.json({ ok: true, ...data });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Impossible de charger les participations.";

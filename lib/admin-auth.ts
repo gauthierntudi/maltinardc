@@ -17,10 +17,10 @@ export function createAdminSessionToken() {
 
 export function verifyPassword(candidate: string) {
   const expected = getAdminPassword();
-  const a = Buffer.from(candidate);
-  const b = Buffer.from(expected);
-  if (a.length !== b.length) return false;
-  return timingSafeEqual(a, b);
+  if (candidate.length !== expected.length) {
+    return false;
+  }
+  return timingSafeEqual(Buffer.from(candidate), Buffer.from(expected));
 }
 
 export function verifyAdminSessionToken(token: string | undefined) {

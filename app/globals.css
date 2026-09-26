@@ -1207,9 +1207,39 @@ body.sheet-open {
   position: absolute;
   inset: 0;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(1px);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(2px);
+}
+
+.admin-busy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  text-align: center;
+}
+
+.admin-busy-label {
+  margin: 0;
+  color: #666;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.admin-busy-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
 }
 
 .admin-participant {
@@ -1228,6 +1258,7 @@ body.sheet-open {
   border-radius: 50%;
   background: linear-gradient(145deg, #ffb347 0%, #ff6f00 100%);
   color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
   font-family: var(--font-montserrat), sans-serif;
   font-size: 0.72rem;
   font-weight: 800;
@@ -1354,6 +1385,169 @@ body.sheet-open {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+
+.admin-row-actions {
+  width: 52px;
+  text-align: right;
+}
+
+.admin-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 12px;
+  background: #fff;
+  color: #666;
+}
+
+.admin-icon-btn:hover:not(:disabled) {
+  border-color: #ffb15a;
+  color: #ea580c;
+  background: #fff8ef;
+}
+
+.admin-icon-btn--danger:hover:not(:disabled) {
+  border-color: rgba(211, 47, 47, 0.35);
+  color: var(--danger);
+  background: #fef2f2;
+}
+
+.admin-icon-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.admin-icon-btn:focus-visible {
+  outline: 3px solid rgba(255, 106, 0, 0.45);
+  outline-offset: 2px;
+}
+
+.admin-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.admin-pagination-btn {
+  min-width: 120px;
+}
+
+.admin-pagination-status {
+  min-width: 100px;
+  text-align: center;
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+body.admin-modal-open {
+  overflow: hidden;
+}
+
+.admin-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.admin-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(26, 26, 26, 0.45);
+  cursor: pointer;
+}
+
+.admin-modal-backdrop:disabled {
+  cursor: default;
+}
+
+.admin-modal {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  padding: 24px 22px 20px;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid rgba(255, 180, 100, 0.35);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.admin-modal-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fef2f2;
+  color: var(--danger);
+  font-size: 1.35rem;
+}
+
+.admin-modal-title {
+  margin: 0 0 10px;
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.admin-modal-message {
+  color: #555;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.admin-modal-message p {
+  margin: 0 0 8px;
+}
+
+.admin-modal-message p:last-child {
+  margin-bottom: 0;
+}
+
+.admin-modal-highlight {
+  margin-top: 12px !important;
+  font-size: 1.05rem !important;
+  color: var(--ink) !important;
+}
+
+.admin-modal-meta {
+  margin-top: 6px !important;
+  color: #888 !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+}
+
+.admin-modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.admin-modal-btn {
+  flex: 1;
+  min-height: 46px;
+}
+
+.admin-modal-btn--danger {
+  background: linear-gradient(180deg, #ef5350 0%, #d32f2f 100%);
 }
 
 .admin-muted {
