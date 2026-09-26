@@ -1,24 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Nunito } from "next/font/google";
+import "@fontsource/montserrat/700.css";
+import "@fontsource/montserrat/700-italic.css";
+import "@fontsource/montserrat/800.css";
+import "@fontsource/montserrat/800-italic.css";
+import "@fontsource/montserrat/900.css";
+import "@fontsource/montserrat/900-italic.css";
+import "@fontsource/nunito/600.css";
+import "@fontsource/nunito/600-italic.css";
+import "@fontsource/nunito/700.css";
+import "@fontsource/nunito/700-italic.css";
+import "@fontsource/nunito/800.css";
+import "@fontsource/nunito/800-italic.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
 import { MALTINA_PRIMARY } from "@/lib/brand";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
-
-const nunito = Nunito({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  style: ["normal", "italic"],
-  variable: "--font-nunito",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Maltina — Participe et tente de gagner",
@@ -36,7 +31,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={`${montserrat.variable} ${nunito.variable}`}>
+    <html lang="fr">
       <body>{children}</body>
     </html>
   );

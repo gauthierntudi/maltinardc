@@ -31,7 +31,7 @@ body {
   flex-direction: column;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-nunito), "Segoe UI", sans-serif;
+  font-family: "Nunito", "Segoe UI", sans-serif;
 }
 
 button,
@@ -139,7 +139,7 @@ button {
   margin: 2px 0 0;
   padding: 0 12px;
   text-align: center;
-  font-family: var(--font-montserrat), Impact, sans-serif;
+  font-family: Montserrat, Impact, sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   line-height: 0.9;
@@ -355,7 +355,7 @@ button {
   border-radius: 999px;
   color: #fff;
   background: linear-gradient(180deg, #ff9f42 0%, #ff7810 38%, #ff5c00 100%);
-  font-family: var(--font-montserrat), Impact, sans-serif;
+  font-family: Montserrat, Impact, sans-serif;
   font-weight: 800;
   font-size: clamp(0.78rem, 3.5vw, 0.95rem);
   letter-spacing: 0.04em;
@@ -643,7 +643,7 @@ body.sheet-open {
   color: #fff;
   background: linear-gradient(180deg, #ff9f42 0%, #ff7810 38%, #ff5c00 100%);
   box-shadow: none;
-  font-family: var(--font-montserrat), Impact, sans-serif;
+  font-family: Montserrat, Impact, sans-serif;
   font-weight: 800;
   font-size: clamp(0.78rem, 3.5vw, 0.95rem);
   letter-spacing: 0.04em;
